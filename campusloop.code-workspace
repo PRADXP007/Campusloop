@@ -1,0 +1,18 @@
+{
+  "folders": [
+    {
+      "name": "CampusLoop - Client (Frontend)",
+      "path": "campusloop-client"
+    },
+    {
+      "name": "CampusLoop - Server (Backend)",
+      "path": "campusloop-server"
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "typescript.tsdk": "campusloop-client/node_modules/typescript/lib"
+  }
+}
