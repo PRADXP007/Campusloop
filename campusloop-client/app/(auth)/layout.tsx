@@ -70,7 +70,6 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className="min-h-screen relative flex flex-col font-body bg-transparent text-white"
-      style={{ perspective: 1200 }}
     >
       {/* ── Fixed Background ── */}
       <div className="fixed inset-0 z-0 pointer-events-none bg-gradient-to-br from-[#020617] via-[#0f172a] to-[#070e27]">
@@ -106,7 +105,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       </header>
 
       {/* ── Content ── */}
-      <div className="relative z-10 flex-1 flex items-center justify-center px-4 sm:px-8 py-10 md:py-16 overflow-visible">
+      <div className="relative z-10 flex-1 flex items-center justify-center px-4 sm:px-8 py-4 lg:py-8 overflow-visible">
         <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
           {/* Left: Marketing copy — desktop only */}
@@ -139,7 +138,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           </div>
 
           {/* Right: Auth card */}
-          <div className="relative flex items-center justify-center w-full">
+          <div className="relative flex items-center justify-center w-full" style={{ perspective: 1200 }}>
             {/* Glow */}
             <div className="absolute -right-16 -top-16 w-[420px] h-[420px] rounded-full bg-[#2563EB]/14 blur-[60px] z-0 pointer-events-none" />
 
