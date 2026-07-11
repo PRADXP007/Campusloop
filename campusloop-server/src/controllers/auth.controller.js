@@ -301,7 +301,11 @@ const logout = async (req, res, next) => {
     req.user.refreshToken = undefined;
     await req.user.save({ validateBeforeSave: false });
 
-    res.clearCookie('refreshToken');
+    res.clearCookie('refreshToken', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+    });
     res.json({ success: true, message: 'Logged out successfully.' });
   } catch (error) {
     next(error);

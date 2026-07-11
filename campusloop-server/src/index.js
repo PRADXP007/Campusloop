@@ -3,6 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const mongoSanitize = require('express-mongo-sanitize');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/error.middleware');
 
@@ -17,6 +19,10 @@ const postRoutes     = require('./routes/post.routes');
 const chatRoutes     = require('./routes/chat.routes');
 
 const app = express();
+
+// ─── Security Middlewares ───────────────────────────────────────────────────
+app.use(helmet());
+app.use(mongoSanitize());
 
 // ─── Database ─────────────────────────────────────────────────────────────
 connectDB();
