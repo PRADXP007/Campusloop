@@ -173,9 +173,11 @@ io.on('connection', (socket) => {
     console.log(`🔌 User disconnected: ${socket.user.name}`);
   });
 });
-
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
-  console.log(`🚀 CampusLoop API + WebSockets running on http://localhost:${PORT}`);
-});
+if (!process.env.VERCEL) {
+  server.listen(PORT, () => {
+    console.log(`🚀 CampusLoop API + WebSockets running on http://localhost:${PORT}`);
+  });
+}
 
+module.exports = app;

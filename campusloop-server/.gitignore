@@ -60,3 +60,4 @@ build/Release
 .Trashes
 ehthumbs.db
 Thumbs.db
+.vercel
