@@ -19,6 +19,7 @@ const postRoutes     = require('./routes/post.routes');
 const chatRoutes     = require('./routes/chat.routes');
 
 const app = express();
+app.set('trust proxy', 1);
 
 // ─── Security Middlewares ───────────────────────────────────────────────────
 app.use(helmet());
