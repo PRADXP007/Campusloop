@@ -55,6 +55,7 @@ const listColleges = async (req, res, next) => {
 
     const colleges = await College.find(filter)
       .sort({ name: 1 })
+      .limit(50)
       .populate('state', 'name')
       .populate('district', 'name')
       .populate('university', 'name');

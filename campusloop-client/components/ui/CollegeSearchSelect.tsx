@@ -155,22 +155,25 @@ export default function CollegeSearchSelect({
     }
   };
 
+  // 3. Debounced college fetch based on State, District, and Query updates
   useEffect(() => {
-    if (activeStateId && activeDistrictId) {
-      fetchCollegesList(activeStateId, activeDistrictId, searchQuery);
-    } else {
+    if (!activeStateId || !activeDistrictId) {
       setColleges([]);
+      return;
     }
-  }, [activeStateId, activeDistrictId]);
 
-  // 4. Handle Search input updates
+    const delayDebounceFn = setTimeout(() => {
+      fetchCollegesList(activeStateId, activeDistrictId, searchQuery);
+    }, 300); // 300ms debounce delay
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery, activeStateId, activeDistrictId]);
+
+  // 4. Handle Search input updates (instant UI typing, debounced network API)
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
     setSearchQuery(query);
     setIsDropdownOpen(true);
-    if (activeStateId && activeDistrictId) {
-      fetchCollegesList(activeStateId, activeDistrictId, query);
-    }
   };
 
   // 5. Detect and sync pre-selection from auto-detect (if parent sets value)
