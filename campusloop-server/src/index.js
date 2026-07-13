@@ -22,7 +22,19 @@ const app = express();
 
 // ─── Security Middlewares ───────────────────────────────────────────────────
 app.use(helmet());
-app.use(mongoSanitize());
+// Sanitize inputs in-place to prevent NoSQL injections without reassigning req.query (Express v5 compatibility)
+app.use((req, res, next) => {
+  if (req.body) mongoSanitize.sanitize(req.body);
+  if (req.params) mongoSanitize.sanitize(req.params);
+  if (req.query) {
+    for (const key in req.query) {
+      if (key.startsWith('$') || key.includes('.')) {
+        delete req.query[key];
+      }
+    }
+  }
+  next();
+});
 
 // ─── Database ─────────────────────────────────────────────────────────────
 connectDB();
