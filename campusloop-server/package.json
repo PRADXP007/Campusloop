@@ -24,6 +24,7 @@
     "helmet": "^8.2.0",
     "indian-colleges": "^1.1.1",
     "jsonwebtoken": "^9.0.2",
+    "mongodb": "^7.6.0",
     "mongoose": "^8.14.1",
     "multer": "^2.1.1",
     "multer-storage-cloudinary": "^4.0.0",
